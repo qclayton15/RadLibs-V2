@@ -16,3 +16,8 @@ post "/Uploadpage" do
     end
     return "The file has been uploaded!"
 end
+
+get "/Storypage" do
+    @title = "Welcome to the Story page"
+    erb(:Storypage)
+end

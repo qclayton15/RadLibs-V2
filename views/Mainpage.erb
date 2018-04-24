@@ -5,3 +5,10 @@
     <li><a href="/Uploadpage">Upload a RadLib</li>
     <li><a href="/Storypage">View a RadLib</li>
 </ul>
+
+<%@folder = Dir.entries('uploads')%>
+<%@folder.shift(2)%>
+<%@folder.each { |story|%>
+<%story.chomp!(".txt")%>
+<a href = "/<%=story%>" id = "story"><%=story%></a>
+<%}%>

@@ -10,12 +10,15 @@ get "/Uploadpage" do
     erb(:Uploadpage)
 end
 
-post "/Uploadpage" do
+post "/upload" do
+
     File.open('uploads/' + params['myfile'][:filename], "w") do |f|
-        f.write(params['myfile'][:tempfile].read)
+      f.write(params['myfile'][:tempfile].read)
     end
-    return "The file has been uploaded!"
-end
+    return "The file was successfully uploaded!"
+    puts "File uploaded"
+  end
+  
 
 get "/Storypage" do
     @title = "Welcome to the Story page"

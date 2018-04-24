@@ -1,12 +1,12 @@
 require "sinatra"
 
 get "/" do
-    @title = "Main Page"
+    # @title = "Main Page"
     erb(:Mainpage)
   end
 
 get "/Uploadpage" do
-    @title = "Welcome to the Upload Page"
+    # @title = "Welcome to the Upload Page"
     erb(:Uploadpage)
 end
 
@@ -21,6 +21,6 @@ post "/upload" do
   
 
 get "/Storypage" do
-    @title = "Welcome to the Story page"
+    # @title = "Welcome to the Story page"
     erb(:Storypage)
 end

@@ -3,16 +3,46 @@
     <li><a href="/">Home Page</li>
     <li><a href="/Uploadpage">Upload a RadLib</li>
 </ul>
+<%p=params['story']%>
+<%@noun = 0%>
+<%@verb = 0%>
+<%@adjective = 0%>
+<%@openedFile = File.open("./uploads/#{p}.txt","r")%>
+<%@read = @openedFile.read %>
+<%@fileSplit = @read.split(" ")%>
+<%@fileSplit.each {|word|%>
+    <%if word ["[noun]"]%>
+        <%@noun += 1%>
+    <%elsif word ["[verb]"]%>
+        <%@verb += 1%>
+    <%elsif word ["[adjective]"]%>
+        <%@adjective += 1%>
+    <%end%>
+<%}%>
 
-<form action = "" enctype = 'multipart/form-data' method = 'POST'>
-    <input type = 'text' title = 'Noun' name='noun' placeholder = "Noun"> 
+
+
+<form action = "" method = 'POST'>
+<%Counter = 0%>
+<%while Counter != @noun%>
+    <input type = 'text' title = 'Noun' name='@nounArr[]' placeholder = "Noun"> 
+    <%Counter += 1%>
     <br>
     <br>
-     <input type = 'text' name='verb' placeholder = "Verb">
+<%end%>
+<%Counter = 0%>
+<%while Counter != @verb%>
+     <input type = 'text' name='@verbArr[]' placeholder = "Verb">
+     <%Counter += 1%>
     <br>
     <br>
-     <input type = 'text' name = 'adjective' placeholder = 'Adjective'>
+<%end%>
+<%Counter = 0%>
+<%while Counter != @adjective%>
+     <input type = 'text' name = 'adjArr[]' placeholder = 'Adjective'>
+     <%Counter += 1%>
     <br>
     <br>
+<%end%>  
     <input type = 'submit' name = 'submitButton' value = 'Upload!')> 
     </form>

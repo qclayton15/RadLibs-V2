@@ -9,7 +9,6 @@ get "/Uploadpage" do
 end
 
 post "/upload" do
-
     File.open('uploads/' + params['myfile'][:filename], "w") do |f|
       f.write(params['myfile'][:tempfile].read)
     end
@@ -17,6 +16,12 @@ post "/upload" do
   end
   
 message = []
-get "/Storypage" do
+get "/story" do
     erb(:Storypage)
+end
+
+post "/story" do
+  @nounArr = params{:@nounArr}
+  @adjArr = params{:@adjArr}
+  @verbArr = params{:@verbArr}
 end

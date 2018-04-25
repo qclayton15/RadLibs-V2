@@ -2,49 +2,6 @@
 
 <h1>Fill out your RadLib!</h1>
 <ul>
-    <li><a href="/">Home Page</li>
-    <li><a href="/Uploadpage">Upload a RadLib</li>
+    <li><a href="/">Home Page</a></li>
+    <li><a href="/Uploadpage">Upload a RadLib</a></li>
 </ul>
-<%p=params['story']%>
-<%@noun = 0%>
-<%@verb = 0%>
-<%@adjective = 0%>
-<%@openedFile = File.open("./uploads/#{p}.txt","r")%>
-<%@read = @openedFile.read %>
-<%@fileSplit = @read.split(" ")%>
-<%@fileSplit.each {|word|%>
-    <%if word ["[noun]"]%>
-        <%@noun += 1%>
-    <%elsif word ["[verb]"]%>
-        <%@verb += 1%>
-    <%elsif word ["[adjective]"]%>
-        <%@adjective += 1%>
-    <%end%>
-<%}%>
-
-
-
-<form action = "" method = 'POST'>
-<%Counter = 0%>
-<%while Counter != @noun%>
-    <input type = 'text' title = 'Noun' name='@nounArr[]' placeholder = "Noun"> 
-    <%Counter += 1%>
-    <br>
-    <br>
-<%end%>
-<%Counter = 0%>
-<%while Counter != @verb%>
-     <input type = 'text' name='@verbArr[]' placeholder = "Verb">
-     <%Counter += 1%>
-    <br>
-    <br>
-<%end%>
-<%Counter = 0%>
-<%while Counter != @adjective%>
-     <input type = 'text' name = 'adjArr[]' placeholder = 'Adjective'>
-     <%Counter += 1%>
-    <br>
-    <br>
-<%end%>  
-    <input type = 'submit' name = 'submitButton' value = 'Upload!')> 
-    </form>
